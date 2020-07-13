@@ -9,6 +9,8 @@
 name: Build OpenWrt lienol
 
 on:
+  watch:
+    types: started
   repository_dispatch:
   release:
     types: published
