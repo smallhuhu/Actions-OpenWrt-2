@@ -25,7 +25,7 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/Lienol/openwrt
+  REPO_URL: https://github.com/ZKingkyle/openwrt
   REPO_BRANCH: dev-19.07
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -74,8 +74,14 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Update feeds
-      run: cd openwrt && rm -rf ./feeds && ./scripts/feeds clean && ./scripts/feeds update -a
+    - name: clean feeds
+      run: cd openwrt && rm -rf ./feeds
+      
+    - name: clean feeds  
+      run: cd openwrt && ./scripts/feeds clean
+      
+    - name: update feeds  
+      run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
